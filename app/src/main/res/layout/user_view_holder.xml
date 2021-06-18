@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="result"
+            type="com.test.project.myapplicationtest.base.Result" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            gender="@{result.gender}"
+            imageUrl="@{result.picture.large}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+
+        <com.like.LikeButton
+            android:id="@+id/likeBtn"
+            likedOrNot="@{result.liked}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationZ="3dp"
+            app:anim_scale_factor="2"
+            app:icon_size="15dp"
+            app:icon_type="heart"
+            app:is_enabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#60FFFFFF"
+            android:orientation="vertical"
+            android:translationZ="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="UnusedAttribute">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@{result.gender.equalsIgnoreCase(`male`) ? @drawable/ic_baseline_male_24 : (result.gender.equalsIgnoreCase(`female`) ? @drawable/ic_baseline_female_24 : @drawable/ic_baseline_transgender_24) }"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/black"
+                android:text="@{result.name.first + ` ` + result.name.last + ` `+ String.valueOf(result.dob.age)}"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                tools:ignore="UseCompatTextViewDrawableXml"
+                tools:targetApi="m"
+                tools:text="Harshal" />
+
+            <TextView
+                android:id="@+id/tvCity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:text="@{result.location.city}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:drawableStartCompat="@drawable/ic_baseline_location_city_24"
+                app:drawableTint="@color/black"
+                tools:text="Mumbai" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
