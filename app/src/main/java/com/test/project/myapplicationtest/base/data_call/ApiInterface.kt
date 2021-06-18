@@ -9,6 +9,6 @@ import retrofit2.http.Query
  * Created by Harshal Chaudhari on 16/06/21.
  */
 interface ApiInterface {
-    @GET("api")
+    @GET("api/")
     suspend fun getUserData(@Query("results") result: Int): Response<UserResponse>
 }
